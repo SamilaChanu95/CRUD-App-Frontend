@@ -7,19 +7,18 @@ import { PaymentDetail } from './payment-detail';
   providedIn: 'root'
 })
 export class PaymentDetailService {
-  paymentDetails: PaymentDetail [] = [];
-  objectAny: any;
-  url: string = environment.apiBaseUrl + '/Payment/get-payment-list';
+  paymentDetails: PaymentDetail[] = [];
+  // url: string = environment.apiBaseUrl + '/Payment/get-payment-list';
+  url: string = '/api/Payment/get-payment-list';
 
   constructor(private _httpClient: HttpClient) { }
 
   getPaymentDetails(): void {
-    this._httpClient.get(this.url).subscribe(res => {
-      if (res) {
-        this.objectAny = res;
-        console.log('this.objectAny: ', this.objectAny);
+    this._httpClient.get(this.url).subscribe((res:any) => {
+        this.paymentDetails = res;
+        console.log('this.paymentDetails: ', this.paymentDetails);
       }
-    });
+    );
   }
 
 }
