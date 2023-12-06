@@ -10,6 +10,60 @@
         </div>
         <div class="flex flex-col col-2 w-600 items-start bg-gray-200">
             <p class="text-sm font-semibold">List of Payment Details</p>
+            <div class="p-1" *ngFor="let item of paymentDetails; trackBy: trackById">
+                <!-- cardOwnerName -->
+                <div class="flex">
+                    <div class="flex flex-row">
+                        <span class="text-md font-bold">
+                            Card Owner Name: &nbsp;
+                        </span>
+                    </div>
+                    <div class="flex flex-row">
+                        <span class="text-md font-bold">
+                            {{item?.cardOwnerName}}
+                        </span>
+                    </div>
+                </div>
+                <!-- cardNumber -->
+                <div class="flex">
+                    <div class="flex flex-row">
+                        <span class="text-md font-bold">
+                            Card Number: &nbsp;
+                        </span>
+                    </div>
+                    <div class="flex flex-row">
+                        <span class="text-md font-bold">
+                            {{item?.cardNumber}}
+                        </span>
+                    </div>
+                </div>
+                <!-- expirationDate -->
+                <div class="flex">
+                    <div class="flex flex-row">
+                        <span class="text-md font-bold">
+                            Card Expiration Date: &nbsp;
+                        </span>
+                    </div>
+                    <div class="flex flex-row">
+                        <span class="text-md font-bold">
+                            {{item?.expirationDate}}
+                        </span>
+                    </div>
+                </div>
+                <!-- securityCode -->
+                <div class="flex">
+                    <div class="flex flex-row">
+                        <span class="text-md font-bold">
+                            Security Code: &nbsp;
+                        </span>
+                    </div>
+                    <div class="flex flex-row">
+                        <span class="text-md font-bold">
+                            {{item?.securityCode}}
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
