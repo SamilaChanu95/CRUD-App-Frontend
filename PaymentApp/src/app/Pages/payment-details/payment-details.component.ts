@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PaymentDetail } from 'src/app/Shared/payment-detail';
 import { PaymentDetailService } from 'src/app/Shared/payment-detail.service';
 
 @Component({
@@ -7,11 +8,16 @@ import { PaymentDetailService } from 'src/app/Shared/payment-detail.service';
   styleUrls: ['./payment-details.component.scss']
 })
 export class PaymentDetailsComponent implements OnInit {
+  paymentDetails: PaymentDetail [] = [];
 
   constructor(private _paymentDetails: PaymentDetailService) { }
 
   ngOnInit(): void {
-    this._paymentDetails.getPaymentDetails();
+    this._paymentDetails.getPaymentDetails().subscribe((res:any) => {
+        this.paymentDetails = res;
+        console.log('this.paymentDetails: ', this.paymentDetails);
+      }
+    );
   }
 
 }
