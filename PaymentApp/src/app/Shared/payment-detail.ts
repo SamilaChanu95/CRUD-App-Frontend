@@ -1,5 +1,5 @@
 export class PaymentDetail {
-    paymentDetailId: number;
+    paymentDetailId: number = 0;
     cardOwnerName: string;
     cardNumber: string;
     expirationDate: string;
