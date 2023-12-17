@@ -15,16 +15,33 @@ export class PaymentDetailsComponent implements OnInit, OnDestroy {
   constructor(private _paymentDetails: PaymentDetailService) { }
 
   ngOnInit(): void {
-    this._paymentDetails.getPaymentDetails().pipe(takeUntil(this.unsubscribe)).subscribe((res:any) => {
-        this.paymentDetails = res;
-        // console.log('this.paymentDetails: ', this.paymentDetails);
-      }
-    );
+    this.refreshList();
   }
 
   ngOnDestroy(): void {
     this.unsubscribe.next();
     this.unsubscribe.complete();
+  }
+
+  deletePayment(paymentId: number): void {
+    this._paymentDetails.deletePaymentDetail(paymentId).subscribe((res: boolean) => {
+      if (res == true) {
+        console.log('deleted');
+        this.refreshList();
+      } else {
+        console.log('nor deleted');
+        this.refreshList();
+      }
+    }); 
+    console.log('paymentId:', paymentId);
+  }
+
+  refreshList() : void {
+    this._paymentDetails.getPaymentDetails().pipe(takeUntil(this.unsubscribe)).subscribe((res : PaymentDetail []) => {
+        this.paymentDetails = res;
+        console.log('paymentDetails:', res);
+      }
+    );
   }
 
   trackById(item: any): number {

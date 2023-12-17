@@ -9,61 +9,70 @@
             <app-payment-detail-form></app-payment-detail-form>
         </div>
         <div class="flex flex-col col-2 w-600 items-start bg-gray-200">
-            <p class="text-sm font-semibold">List of Payment Details</p>
-            <div class="p-1" *ngFor="let item of paymentDetails; trackBy: trackById">
-                <!-- cardOwnerName -->
-                <div class="flex">
-                    <div class="flex flex-row">
-                        <span class="text-md font-bold">
-                            Card Owner Name: &nbsp;
-                        </span>
-                    </div>
-                    <div class="flex flex-row">
-                        <span class="text-md font-bold">
-                            {{item?.cardOwnerName}}
-                        </span>
+            <span class="text-sm font-semibold pb-0">List of Payment Details</span>
+            <ng-container *ngFor="let item of paymentDetails; trackBy: trackById">
+                <div class="pt-2 last:pb-2 pr-2 flex flex-row w-full">
+                    <div class="flex flex-row p-2 w-full bg-card bg-gray-400 rounded-lg justify-between">
+                        <div>
+                             <!-- Card Owner Name -->
+                            <div class="flex">
+                                <div class="flex flex-row">
+                                    <span class="text-md font-bold">
+                                        Card Owner Name: &nbsp;
+                                    </span>
+                                </div>
+                                <div class="flex flex-row">
+                                    <span class="text-md font-bold">
+                                        {{item?.cardOwnerName}}
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- Card Number -->
+                            <div class="flex">
+                                <div class="flex flex-row">
+                                    <span class="text-md font-bold">
+                                        Card Number: &nbsp;
+                                    </span>
+                                </div>
+                                <div class="flex flex-row">
+                                    <span class="text-md font-bold">
+                                        {{item?.cardNumber}}
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- Expiration Date -->
+                            <div class="flex">
+                                <div class="flex flex-row">
+                                    <span class="text-md font-bold">
+                                        Card Expiration Date: &nbsp;
+                                    </span>
+                                </div>
+                                <div class="flex flex-row">
+                                    <span class="text-md font-bold">
+                                        {{item?.expirationDate}}
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- Security Code -->
+                            <div class="flex">
+                                <div class="flex flex-row">
+                                    <span class="text-md font-bold">
+                                        Security Code: &nbsp;
+                                    </span>
+                                </div>
+                                <div class="flex flex-row">
+                                    <span class="text-md font-bold">
+                                        {{item?.securityCode}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home" class="cursor-pointer" (click)="deletePayment(item.paymentDetailId)">delete</mat-icon>
+                        </div>
                     </div>
                 </div>
-                <!-- cardNumber -->
-                <div class="flex">
-                    <div class="flex flex-row">
-                        <span class="text-md font-bold">
-                            Card Number: &nbsp;
-                        </span>
-                    </div>
-                    <div class="flex flex-row">
-                        <span class="text-md font-bold">
-                            {{item?.cardNumber}}
-                        </span>
-                    </div>
-                </div>
-                <!-- expirationDate -->
-                <div class="flex">
-                    <div class="flex flex-row">
-                        <span class="text-md font-bold">
-                            Card Expiration Date: &nbsp;
-                        </span>
-                    </div>
-                    <div class="flex flex-row">
-                        <span class="text-md font-bold">
-                            {{item?.expirationDate}}
-                        </span>
-                    </div>
-                </div>
-                <!-- securityCode -->
-                <div class="flex">
-                    <div class="flex flex-row">
-                        <span class="text-md font-bold">
-                            Security Code: &nbsp;
-                        </span>
-                    </div>
-                    <div class="flex flex-row">
-                        <span class="text-md font-bold">
-                            {{item?.securityCode}}
-                        </span>
-                    </div>
-                </div>
-            </div>
+            </ng-container>
         </div>
     </div>
 </div>
