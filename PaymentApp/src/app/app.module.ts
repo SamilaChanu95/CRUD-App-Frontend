@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PaymentDetailFormComponent } from './Pages/payment-detail-form/payment-detail-form.component';
 import { PaymentDetailsComponent } from './Pages/payment-details/payment-details.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PaymentDetailsComponent } from './Pages/payment-details/payment-details
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
